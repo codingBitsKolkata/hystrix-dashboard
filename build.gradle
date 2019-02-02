@@ -14,12 +14,24 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 
-group = 'com.stays.hystrix-dashboard'
-version = '0.0.1-SNAPSHOT'
+group = 'com.orastays'
+//version = '1'
 sourceCompatibility = 1.8
 
 repositories {
 	mavenCentral()
+}
+
+//create a single Jar with all dependencies
+task fatJar(type: Jar) {
+	manifest {
+        attributes 'Implementation-Title': 'Hystrix Dashboard',  
+        	//'Implementation-Version': version,
+        	'Main-Class': 'com.orastays.hystrixdashboard.HystrixDashboardApplication'
+    }
+    baseName = project.name
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
 }
 
 
