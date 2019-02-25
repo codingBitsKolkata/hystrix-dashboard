@@ -1,4 +1,4 @@
-package com.stays.hystrixdashboard;
+package com.orastays.hystrixdashboard;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
